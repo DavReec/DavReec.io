@@ -7,13 +7,17 @@
   </head>
   <body>
     <div id = "cajaCuadros">
-        <h1>WORDLE</h1>
-        <input type="text" id="guess-input">
-        <button id="guess-button">Intentar</button>
+        <div id = "cabecera">
+          <h1>WORDLE</h1>
+          <input type="text" id="guess-input">
+          <button id="guess-button">Intentar</button>
+          <button id="reiniciar">Reiniciar</button>
+        </div>
         <div id="grid"></div>
         <p id="guesses"> 
-        <div id='grid'>
-        </div> 
-    </div>      
-</body>
+      </div>
+      <div id="cajaResultado" style = "display: none;">
+        <p id="resultado">No se</p>
+      </div>
+  </body>
 </html>
