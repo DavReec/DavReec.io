@@ -10,7 +10,7 @@ h1 {
     text-align: center;
     margin-top: 50px;
 }
-    
+
 #guess-input {
     display: block;
     margin: 0 auto 20px;
@@ -25,8 +25,8 @@ button:hover{
 }    
 
 #guess-button {
-    display: block;
-    margin: 0 auto;
+    display: inline;
+    margin: auto;
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
@@ -36,7 +36,18 @@ button:hover{
     border-radius: 6%;
     border: 2px solid #0a4661;
 }
-    
+#reiniciar {
+    display: inline;
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #138DC7;
+    color: #ffffff;
+    border: none;
+    border-radius: 6%;
+    border: 2px solid #0a4661;
+}
 button:active {
     transform: scale(0.98);
     background-color: aliceblue;
@@ -72,6 +83,24 @@ button:active {
     border: 3px solid rgb(187, 172, 172);
     border-radius: 3%;
     box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.6);
+}
+
+#cajaResultado{
+    position: relative;
+    margin: 5%;
+    background-color: #d4d6d7;
+    height: 150px;
+    width: 20%;
+    opacity: 0.7;
+    border-radius: 4%;
+    align-items: center;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.6);
+}
+#resultado{
+    margin: 14%;
+    font-size: 240%;
+    padding-top: 2%;
+    color: #000;
 }
 
 
