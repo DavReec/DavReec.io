@@ -17,48 +17,65 @@ const BTNREINICIAR = document.getElementById("reiniciar");
 BTNREINICIAR.disabled = true;
 BTNREINICIAR.style.backgroundColor = "#BFC0C2"
 
+
 function intentar(){
     let res;
     const INTENTO = leerIntento();
-    if (INTENTO === palabra ) {
-        console.log("GANASTE!")
-        res = 1;
-        final(res);
-        return
-    }
-    for (let i in palabra){
-        if (INTENTO[i]===palabra[i]){
-            console.log(INTENTO[i], "VERDE")
-        } else if( palabra.includes(INTENTO[i]) ) {
-            console.log(INTENTO[i], "AMARILLO")
-        } else {
-            console.log(INTENTO[i], "GRIS")
-        }
-    }
-		intentos--
-        const GRID = document.getElementById("grid");
-        const ROW = document.createElement('div');
-        ROW.className = 'row';
-        for (let i in palabra){
-            const SPAN = document.createElement('span');
-            SPAN.className = 'letter';
-            if (INTENTO[i]===palabra[i]){
+    if (INTENTO.length == 5){
+        if (INTENTO === palabra ) {
+            console.log("GANASTE!")
+            res = 1;
+            final(res);
+            const GRID = document.getElementById("grid");
+            const ROW = document.createElement('div');
+            ROW.className = 'row';
+            for (let i in palabra){
+                const SPAN = document.createElement('span');
+                SPAN.className = 'letter'
                 SPAN.innerHTML = INTENTO[i];
                 SPAN.style.backgroundColor = '#ABF0D1';
-            } else if( palabra.includes(INTENTO[i]) ) { 
-                SPAN.innerHTML = INTENTO[i];
-                SPAN.style.backgroundColor = '#FCFD95';
-            } else { 
-                SPAN.innerHTML = INTENTO[i];
-                SPAN.style.backgroundColor = '#BFC0C2';
+
+                ROW.appendChild(SPAN)
             }
-            ROW.appendChild(SPAN)
+            GRID.appendChild(ROW)
+            return
         }
-        GRID.appendChild(ROW)
-    if (intentos==0){
-        console.log("PERDISTE!")
-        res = 0;
-        final(res);
+        for (let i in palabra){
+            if (INTENTO[i]===palabra[i]){
+                console.log(INTENTO[i], "VERDE")
+            } else if( palabra.includes(INTENTO[i]) ) {
+                console.log(INTENTO[i], "AMARILLO")
+            } else {
+                console.log(INTENTO[i], "GRIS")
+            }
+        }
+            intentos--
+            const GRID = document.getElementById("grid");
+            const ROW = document.createElement('div');
+            ROW.className = 'row';
+            for (let i in palabra){
+                const SPAN = document.createElement('span');
+                SPAN.className = 'letter';
+                if (INTENTO[i]===palabra[i]){
+                    SPAN.innerHTML = INTENTO[i];
+                    SPAN.style.backgroundColor = '#ABF0D1';
+                } else if( palabra.includes(INTENTO[i]) ) { 
+                    SPAN.innerHTML = INTENTO[i];
+                    SPAN.style.backgroundColor = '#FCFD95';
+                } else { 
+                    SPAN.innerHTML = INTENTO[i];
+                    SPAN.style.backgroundColor = '#BFC0C2';
+                }
+                ROW.appendChild(SPAN)
+            }
+            GRID.appendChild(ROW)
+        if (intentos==0){
+            console.log("PERDISTE!")
+            res = 0;
+            final(res);
+        }
+    }else{
+        alert('Solo se aceptan palabras de 5 letras')
     }
     
 }
@@ -86,4 +103,5 @@ function final(res){
     BUTTON.disabled = true;
     BTNREINICIAR.style.backgroundColor = "#138DC7"
     BUTTON.style.backgroundColor = "#BFC0C2"
+    BUTTON.style.active = "transform"
 }
