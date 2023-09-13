@@ -1,16 +1,32 @@
-let palabra = "APPLE";
+let diccionario = ['APPLE', 'HURLS', 'WINGS', 'YOUTH']
+Math.floor(Math.random() * 10) + 1;
+let palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
 let intentos = 6;
-
-const button = document.getElementById("guess-button");
-button.addEventListener("click", intentar);
 
 const input = document.getElementById("guess-input");
 const valor = input.value;
+const BUTTON = document.getElementById("guess-button");
+const BTNREINICIAR = document.getElementById("reiniciar");
+BUTTON.addEventListener("click", intentar);
+BTNREINICIAR.addEventListener("click", reiniciar)
+
+function reiniciar(){
+    BUTTON.disabled = false;
+    let CAJARES = document.getElementById("cajaResultado");
+    CAJARES.style.display = "none"
+    intentos = 6;
+    const letters = document.getElementById('letters');
+    letters.remove()
+    return intentos 
+}
 
 function intentar(){
+    let res;
     const INTENTO = leerIntento();
     if (INTENTO === palabra ) {
         console.log("GANASTE!")
+        res = 1;
+        final(res);
         return
     }
     for (let i in palabra){
@@ -44,7 +60,10 @@ function intentar(){
         GRID.appendChild(ROW)
     if (intentos==0){
         console.log("PERDISTE!")
+        res = 0;
+        final(res);
     }
+    
 }
 
 function leerIntento(){
@@ -54,4 +73,19 @@ function leerIntento(){
     return intento;
 }
 
+function final(res){
+    let CAJARES = document.getElementById("cajaResultado");
+    const RESULTADO = document.getElementById("resultado");
+    if (res == 1){
+        RESULTADO.innerHTML = "Ganaste :)";
+        CAJARES.style.display = "block"
+    }else{
+        RESULTADO.innerHTML = "Perdiste :( Intentalo de nuevo";
+        CAJARES.style.display = "block"
+    }
+    const GRIDS = document.getElementById("grid");
+    GRIDS.style.opacity = "0.5  "
+    BUTTON.disabled = true;
+
+}
 
