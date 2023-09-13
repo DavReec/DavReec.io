@@ -1,12 +1,21 @@
-let diccionario = ['APPLE', 'HURLS', 'WINGS', 'YOUTH']
-Math.floor(Math.random() * 10) + 1;
-let palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
 let intentos = 6;
+let palabra 
+
+fetch('https://random-word-api.herokuapp.com/word?length=5&&lang=en')
+    .then(response => response.json())
+    .then(response => {
+        console.log(response)
+        palabra = response[0].toUpperCase()
+    })
+    .catch(err => console.error(err))
 
 const input = document.getElementById("guess-input");
 const valor = input.value;
 const BUTTON = document.getElementById("guess-button");
 BUTTON.addEventListener("click", intentar);
+const BTNREINICIAR = document.getElementById("reiniciar");
+BTNREINICIAR.disabled = true;
+BTNREINICIAR.style.backgroundColor = "#BFC0C2"
 
 function intentar(){
     let res;
@@ -72,8 +81,9 @@ function final(res){
         CAJARES.style.display = "block"
     }
     const GRIDS = document.getElementById("grid");
+    BTNREINICIAR.disabled = false;
     GRIDS.style.opacity = "0.5  "
     BUTTON.disabled = true;
-
+    BTNREINICIAR.style.backgroundColor = "#138DC7"
+    BUTTON.style.backgroundColor = "#BFC0C2"
 }
-
