@@ -6,19 +6,7 @@ let intentos = 6;
 const input = document.getElementById("guess-input");
 const valor = input.value;
 const BUTTON = document.getElementById("guess-button");
-const BTNREINICIAR = document.getElementById("reiniciar");
 BUTTON.addEventListener("click", intentar);
-BTNREINICIAR.addEventListener("click", reiniciar)
-
-function reiniciar(){
-    BUTTON.disabled = false;
-    let CAJARES = document.getElementById("cajaResultado");
-    CAJARES.style.display = "none"
-    intentos = 6;
-    const letters = document.getElementById('letters');
-    letters.remove()
-    return intentos 
-}
 
 function intentar(){
     let res;
