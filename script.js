@@ -22,24 +22,6 @@ function intentar(){
     let res;
     const INTENTO = leerIntento();
     if (INTENTO.length == 5){
-        if (INTENTO === palabra ) {
-            console.log("GANASTE!")
-            res = 1;
-            final(res);
-            const GRID = document.getElementById("grid");
-            const ROW = document.createElement('div');
-            ROW.className = 'row';
-            for (let i in palabra){
-                const SPAN = document.createElement('span');
-                SPAN.className = 'letter'
-                SPAN.innerHTML = INTENTO[i];
-                SPAN.style.backgroundColor = '#ABF0D1';
-
-                ROW.appendChild(SPAN)
-            }
-            GRID.appendChild(ROW)
-            return
-        }
         for (let i in palabra){
             if (INTENTO[i]===palabra[i]){
                 console.log(INTENTO[i], "VERDE")
@@ -73,6 +55,12 @@ function intentar(){
             console.log("PERDISTE!")
             res = 0;
             final(res);
+        }
+        if (INTENTO === palabra ) {
+            console.log("GANASTE!")
+            res = 1;
+            final(res)
+            return
         }
     }else{
         alert('Solo se aceptan palabras de 5 letras')
